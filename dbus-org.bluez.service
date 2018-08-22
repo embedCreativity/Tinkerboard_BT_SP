@@ -1,0 +1,21 @@
+[Unit]
+Description=Bluetooth service
+Documentation=man:bluetoothd(8)
+ConditionPathIsDirectory=/sys/class/bluetooth
+
+[Service]
+Type=dbus
+BusName=org.bluez
+# Mark Taylor - modified due to suggestion from
+# www.raspberry-pi-geek.com/Archive/2016/18/Setting-up-Bluetooth-on-the-Raspberry-Pi-3/(offset)/2
+# https://raspberrypi.stackexchange.com/questions/41776/failed-to-connect-to-sdp-server-on-ffffff000000-no-such-file-or-directory
+ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap --compat
+NotifyAccess=main
+#WatchdogSec=10
+#Restart=on-failure
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+LimitNPROC=1
+
+[Install]
+WantedBy=bluetooth.target
+Alias=dbus-org.bluez.service

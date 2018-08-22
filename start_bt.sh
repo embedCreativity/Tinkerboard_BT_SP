@@ -24,7 +24,8 @@ else
     TTY=$1
 fi
 
-TTY="/dev/$TTY"
+#TTY="/dev/$TTY"
+TTY="/dev/ttyS0"
 echo "Using device $TTY for Bluetooth"
 
 if [ ! -f /lib/firmware/rtl_bt/rtlbt_config ];

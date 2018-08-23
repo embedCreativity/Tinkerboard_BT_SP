@@ -9,6 +9,8 @@ sleep 10
 echo "Calling hciconfig hci0 up..."
 sudo /bin/hciconfig hci0 up
 sleep 5
+echo "Setting device class to Desktop Workstation"
+sudo /bin/hciconfig hci0 class 0x104
 echo "/bin/hciconfig hci0 sspmode 1..."
 sudo /bin/hciconfig hci0 sspmode 1
 echo "/bin/hciconfig hci0 piscan..."
